@@ -357,7 +357,7 @@ class SKVQuantProcessor(nn.Module):
         self,
         ttype: Literal["k", "v"],
         tensor: torch.Tensor,
-        impl: Literal["py", "cuda", "triton"] = "cuda",
+        impl: Literal["py", "cuda", "triton"] = "python",
     ):
         assert ttype in ["k", "v"]
         assert impl in ["py", "cuda"]

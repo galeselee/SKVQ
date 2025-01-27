@@ -10,7 +10,7 @@ DATASET_CACHE = {
 
 MODEL_NAME_TO_PATH = {
     "llama-7b": "YOUR_PATH_TO/llama-7b",
-    "llama2-7b": "YOUR_PATH_TO/llama2-7b",
+    "llama2-7b": "/home/aiscuser/models/Llama-2-7b",
     "llama2-7b-chat": "YOUR_PATH_TO/llama2-7b-chat",
     "llama2-7b-80k": "YOUR_PATH_TO/llama2-7b-80k",
     "llama2-7b-32k": "YOUR_PATH_TO/llama2-7b-32k",
