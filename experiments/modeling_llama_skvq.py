@@ -341,7 +341,9 @@ class LlamaAttention(nn.Module):
                 base=self.rope_theta,
             )
         else:
-            scaling_type = self.config.rope_scaling["type"]
+            print(self.config.rope_scaling)
+            # scaling_type = self.config.rope_scaling["rope_type"]
+            scaling_type="dynamic"
             scaling_factor = self.config.rope_scaling["factor"]
             if scaling_type == "linear":
                 self.rotary_emb = LlamaLinearScalingRotaryEmbedding(

@@ -14,6 +14,32 @@ from experiments.utils import plug_quantizer_into_model
 from KVcache_manager import ModelKVCacheManager
 from calib_config import *
 
+import random
+import torch
+
+def get_c4(tokenizer, seqlen):
+    from datasets import load_dataset
+
+    valdata = load_dataset('allenai/c4', data_files={'validation': 'en/c4-validation.00000-of-00008.json.gz'}, split='validation', num_proc=48)
+
+    import random
+    random.seed(0)
+    valenc = []
+    for _ in range(256):
+        while True:
+            i = random.randint(0, len(valdata) - 1)
+            tmp = tokenizer.encode(valdata[i]['text'], return_tensors='pt')
+            if tmp.shape[1] > seqlen:
+                break
+        i = random.randint(0, tmp.shape[1] - seqlen - 1)
+        j = i + seqlen
+        valenc.append(tmp[:, i:j])
+        # print(valdata[i]['text'])
+        # exit()
+    valenc = torch.hstack(valenc)
+
+    return valenc
+
 
 @torch.no_grad()
 def eval_ppl(
@@ -25,8 +51,7 @@ def eval_ppl(
     if dataset not in DATASET_CACHE:
         raise RuntimeError(f"{dataset} invalid")
 
-    testdata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train')
-    testenc = tokenizer("\n\n".join(testdata["text"]), return_tensors="pt")["input_ids"]
+    testenc = get_c4(tokenizer, input_len)
 
     nsamples = testenc.numel() // input_len
     nlls = []
@@ -73,6 +98,8 @@ if __name__ == "__main__":
         "llama2-13b": 4096,
         "llama2-7b-chat": 4096,
         "llama2-13b-chat": 4096,
+        "llama3-8b": 8192,
+        "llama31-8b": 8192,
         "mistral-7b": 8192,
         "llama2-7b-80k": 10000,
     }
@@ -88,7 +115,7 @@ if __name__ == "__main__":
         torch_dtype=torch.float16,
         use_flash_attention_2=True,
     )
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, use_fast=False)
     num_layers = len(model.model.layers)
     input_len = model_to_len[model_name]
 
@@ -102,7 +129,7 @@ if __name__ == "__main__":
     for group_size in group_set:
         rod_meta = MODEL_TO_REORDER[model_name][group_size]["minmax"]
         for kbits, vbits in [
-            (4,4), (3,3), (2,2),
+            (2,2), (1,1)
         ]:
             kv_managers_lis.append(
                 ModelKVCacheManager.create(

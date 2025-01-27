@@ -349,6 +349,7 @@ if __name__ == "__main__":
         "llama2-70b": (4096, 256),
         "llama3-70b-instruct": (4096, 256),
         "llama3-8b": (4096, 256),
+        "llama31-8b": (4096, 256),
         "mistral-7b": (4096, 256),
         "mistral-7b-instruct-v0.2": (4096, 256),
 

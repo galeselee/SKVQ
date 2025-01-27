@@ -19,7 +19,8 @@ MODEL_NAME_TO_PATH = {
     "llama2-70b": "YOUR_PATH_TO/Llama-2-70b-hf",
     "llama3-70b-instruct": "YOUR_PATH_TO/Meta-Llama-3-70B-Instruct",
     "llama3-8b": "/home/aiscuser/models/Meta-Llama-3-8B",
-    "mistral-7b": "YOUR_PATH_TO/.cache/huggingface/hub/models--mistralai--Mistral-7B-v0.1/snapshots/26bca36bde8333b5d7f72e9ed20ccda6a618af24",
+    "llama31-8b": "/home/aiscuser/models/Llama-3.1-8B",
+    "mistral-7b": "/home/aiscuser/models/Mistral-7B",
     "mistral-7b-instruct-v0.2": "YOUR_PATH_TO/mistral-7b-instruct-v0.2",
     "vicuna-v1.5-7b-16k": "YOUR_PATH_TO/.cache/huggingface/hub/models--lmsys--vicuna-7b-v1.5-16k/snapshots/c8df3ca4436a3bce5c4b5877e0117032081852b4",
     "longchat-v1.5-7b-32k": "YOUR_PATH_TO/.cache/huggingface/hub/models--lmsys--longchat-7b-v1.5-32k/snapshots/16deb633ef4d6a18d5750239edc5a85ffeaf3918",
@@ -29,6 +30,7 @@ MODEL_NAME_TO_PATH = {
 MODEL_TO_SMOOTH = {
     "llama-7b": f"{CALIB_DIR}/llama-7b-wikitext2-v1-n256-len2048-smooth-alpha1.0.pt",
     "llama2-7b": f"{CALIB_DIR}/llama2-7b-wikitext2-v1-n256-len4096-smooth-alpha1.0.pt",
+    "llama3-8b": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n256-len4096-smooth-alpha1.0.pt",
     "llama2-7b-chat": f"{CALIB_DIR}/llama2-7b-chat-wikitext2-v1-n256-len4096-smooth-alpha1.0.pt",
     "llama2-7b-80k": f"{CALIB_DIR}/llama2-7b-80k-wikitext2-v1-n256-len4096-smooth-alpha1.0.pt",
     # "llama2-7b-80k": f"{CALIB_DIR}/llama2-7b-80k-g128-smooth-learning-n4096.pt",
@@ -169,6 +171,20 @@ MODEL_TO_REORDER = {
         },
         32: {
             "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_32.pt",
+        },
+    },
+    "llama31-8b": {
+        256: {
+            "minmax": f"{CALIB_DIR}/llama31-8b-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_4.pt",
+        },
+        128: {
+            "minmax": f"{CALIB_DIR}/llama31-8b-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_8.pt",
+        },
+        64: {
+            "minmax": f"{CALIB_DIR}/llama31-8b-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_16.pt",
+        },
+        32: {
+            "minmax": f"{CALIB_DIR}/llama31-8b-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_32.pt",
         },
     },
     "mistral-7b": {
