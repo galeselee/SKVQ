@@ -20,7 +20,7 @@ from calib_config import MODEL_NAME_TO_PATH, DATASET_CACHE
 
 
 def get_wikitext2(seed, nsamples, seqlen, tokenizer):
-    traindata = load_dataset(DATASET_CACHE["wikitext2-v1"], split='train')
+    traindata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train')
     trainenc = tokenizer("\n\n".join(traindata['text']), return_tensors='pt')
 
     random.seed(seed)
@@ -348,7 +348,7 @@ if __name__ == "__main__":
         "llama2-13b-chat": (4096, 256),
         "llama2-70b": (4096, 256),
         "llama3-70b-instruct": (4096, 256),
-
+        "llama3-8b": (4096, 256),
         "mistral-7b": (4096, 256),
         "mistral-7b-instruct-v0.2": (4096, 256),
 
@@ -359,6 +359,7 @@ if __name__ == "__main__":
     model_path = MODEL_NAME_TO_PATH[model_name]
     sample_len, nsample = model_to_data_size[model_name]
     dataset = args.dataset
+    print(model_path)
 
     sample_len = args.sample_len if args.sample_len is not None else sample_len
     nsample = args.nsample if args.nsample is not None else nsample

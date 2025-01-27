@@ -10,7 +10,7 @@ DATASET_CACHE = {
 
 MODEL_NAME_TO_PATH = {
     "llama-7b": "YOUR_PATH_TO/llama-7b",
-    "llama2-7b": "/home/aiscuser/models/Llama-2-7b",
+    "llama2-7b": "/home/aiscuser/models/Llama-2-7b-hf",
     "llama2-7b-chat": "YOUR_PATH_TO/llama2-7b-chat",
     "llama2-7b-80k": "YOUR_PATH_TO/llama2-7b-80k",
     "llama2-7b-32k": "YOUR_PATH_TO/llama2-7b-32k",
@@ -18,6 +18,7 @@ MODEL_NAME_TO_PATH = {
     "llama2-13b-chat": "YOUR_PATH_TO/llama2-13b-chat",
     "llama2-70b": "YOUR_PATH_TO/Llama-2-70b-hf",
     "llama3-70b-instruct": "YOUR_PATH_TO/Meta-Llama-3-70B-Instruct",
+    "llama3-8b": "/home/aiscuser/models/Meta-Llama-3-8B",
     "mistral-7b": "YOUR_PATH_TO/.cache/huggingface/hub/models--mistralai--Mistral-7B-v0.1/snapshots/26bca36bde8333b5d7f72e9ed20ccda6a618af24",
     "mistral-7b-instruct-v0.2": "YOUR_PATH_TO/mistral-7b-instruct-v0.2",
     "vicuna-v1.5-7b-16k": "YOUR_PATH_TO/.cache/huggingface/hub/models--lmsys--vicuna-7b-v1.5-16k/snapshots/c8df3ca4436a3bce5c4b5877e0117032081852b4",
@@ -154,6 +155,20 @@ MODEL_TO_REORDER = {
         },
         32: {
             "minmax": f"{CALIB_DIR}/llama3-70b-instruct-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_32.pt",
+        },
+    },
+    "llama3-8b": {
+        256: {
+            "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_4.pt",
+        },
+        128: {
+            "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_8.pt",
+        },
+        64: {
+            "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_16.pt",
+        },
+        32: {
+            "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n256-len4096-minmax-rod_idx-cluster_32.pt",
         },
     },
     "mistral-7b": {

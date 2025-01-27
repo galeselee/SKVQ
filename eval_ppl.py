@@ -25,7 +25,7 @@ def eval_ppl(
     if dataset not in DATASET_CACHE:
         raise RuntimeError(f"{dataset} invalid")
 
-    testdata = load_dataset(DATASET_CACHE["wikitext2-v1"], split="test")
+    testdata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train')
     testenc = tokenizer("\n\n".join(testdata["text"]), return_tensors="pt")["input_ids"]
 
     nsamples = testenc.numel() // input_len
