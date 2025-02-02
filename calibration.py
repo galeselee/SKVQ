@@ -2,6 +2,7 @@ import os
 import torch
 import argparse
 import random
+import json
 from tqdm import tqdm
 from functools import partial
 from datasets import load_dataset
@@ -51,6 +52,27 @@ def get_ptb(seed, nsamples, seqlen, tokenizer):
     return trainloader
 
 
+def get_redpajama(seed, nsamples, seqlen, tokenizer):
+    prompts = []
+    offline_json = '/home/aiscuser/data/redpajama_sample_4096.json'
+    with open(offline_json, "r") as f:
+        prompts_json = json.load(f)
+        for key, value in prompts_json.items():
+            prompts.append(value["input"])
+
+    random.seed(seed)
+    prompts = random.sample(prompts, nsamples)
+
+    trainloader = []
+    for prompt in prompts:
+        inp = tokenizer(prompt, return_tensors="pt")["input_ids"][:, :seqlen]
+        tar = inp.clone()
+        tar[:, :-1] = -100
+        trainloader.append((inp, tar))
+
+    return trainloader
+
+
 def get_data(
     dataset: str,
     tokenizer: PreTrainedTokenizer,
@@ -60,11 +82,13 @@ def get_data(
     if dataset == "needle":
         return torch.load(DATASET_CACHE["needle"])
 
-    seed = 42
+    seed = 0
     if dataset == "wikitext2-v1":
         data = get_wikitext2(seed, nsample, sample_len, tokenizer)
     elif dataset == "ptb":
         data = get_ptb(seed, nsample, sample_len, tokenizer)
+    elif dataset == "redpajama":
+        data = get_redpajama(seed, nsample, sample_len, tokenizer)
     else:
         raise RuntimeError("Not supported")
 
@@ -332,14 +356,10 @@ if __name__ == "__main__":
     parser.add_argument('--dataset', type=str, default="wikitext2-v1")
     parser.add_argument('--nsample', type=int, default=None)
     parser.add_argument('--sample_len', type=int, default=None)
-
     args = parser.parse_args()
-
     model_name = args.model_name
 
     model_to_data_size = {
-        "llama-7b": (2048, 256),
-
         "llama2-7b": (4096, 256),
         "llama2-7b-32k": (4096, 256),
         "llama2-7b-80k": (4096, 256),
@@ -352,7 +372,6 @@ if __name__ == "__main__":
         "llama31-8b": (4096, 256),
         "mistral-7b": (4096, 256),
         "mistral-7b-instruct-v0.2": (4096, 256),
-
         "longchat-v1.5-7b-32k": (4096, 256),
         "vicuna-v1.5-7b-16k": (4096, 256),
     }
