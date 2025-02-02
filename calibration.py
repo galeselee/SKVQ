@@ -360,20 +360,20 @@ if __name__ == "__main__":
     model_name = args.model_name
 
     model_to_data_size = {
-        "llama2-7b": (4096, 256),
-        "llama2-7b-32k": (4096, 256),
-        "llama2-7b-80k": (4096, 256),
-        "llama2-7b-chat": (4096, 256),
-        "llama2-13b": (4096, 256),
-        "llama2-13b-chat": (4096, 256),
-        "llama2-70b": (4096, 256),
-        "llama3-70b-instruct": (4096, 256),
-        "llama3-8b": (4096, 256),
-        "llama31-8b": (4096, 256),
-        "mistral-7b": (4096, 256),
-        "mistral-7b-instruct-v0.2": (4096, 256),
-        "longchat-v1.5-7b-32k": (4096, 256),
-        "vicuna-v1.5-7b-16k": (4096, 256),
+        "llama2-7b": (4096, 128),
+        "llama2-7b-32k": (4096, 128),
+        "llama2-7b-80k": (4096, 128),
+        "llama2-7b-chat": (4096, 128),
+        "llama2-13b": (4096, 128),
+        "llama2-13b-chat": (4096, 128),
+        "llama2-70b": (4096, 128),
+        "llama3-70b-instruct": (4096, 128),
+        "llama3-8b": (4096, 128),
+        "llama31-8b": (4096, 128),
+        "mistral-7b": (4096, 128),
+        "mistral-7b-instruct-v0.2": (4096, 128),
+        "longchat-v1.5-7b-32k": (4096, 128),
+        "vicuna-v1.5-7b-16k": (4096, 128),
     }
 
     model_path = MODEL_NAME_TO_PATH[model_name]
