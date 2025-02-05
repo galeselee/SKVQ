@@ -72,6 +72,25 @@ def get_redpajama(seed, nsamples, seqlen, tokenizer):
 
     return trainloader
 
+def get_c4(seed, nsamples, seqlen, tokenizer):
+    traindata = load_dataset('allenai/c4', data_files={'train': 'en/c4-train.00000-of-01024.json.gz'}, split='train', num_proc=48)
+    import random
+    random.seed(seed)
+    trainloader = []
+    for _ in range(nsamples):
+        while True:
+            i = random.randint(0, len(traindata) - 1)
+            trainenc = tokenizer(traindata[i]['text'], return_tensors='pt')
+            if trainenc.input_ids.shape[1] >= seqlen:
+                break
+        i = random.randint(0, trainenc.input_ids.shape[1] - seqlen - 1)
+        j = i + seqlen
+        inp = trainenc.input_ids[:, i:j]
+        tar = inp.clone()
+        tar[:, :-1] = -100
+        trainloader.append((inp, tar))
+
+    return trainloader
 
 def get_data(
     dataset: str,
@@ -88,6 +107,8 @@ def get_data(
     elif dataset == "ptb":
         data = get_ptb(seed, nsample, sample_len, tokenizer)
     elif dataset == "redpajama":
+        data = get_redpajama(seed, nsample, sample_len, tokenizer)
+    elif dataset == "c4":
         data = get_redpajama(seed, nsample, sample_len, tokenizer)
     else:
         raise RuntimeError("Not supported")

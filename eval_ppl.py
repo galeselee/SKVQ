@@ -40,6 +40,13 @@ def get_c4(tokenizer, seqlen):
 
     return valenc
 
+def get_wikitext2(tokenizer, seqlen):
+    from datasets import load_dataset
+    testdata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='test')
+    from transformers import AutoTokenizer
+    testenc = tokenizer.encode("\n\n".join(testdata['text']), return_tensors='pt')
+
+    return testenc
 
 @torch.no_grad()
 def eval_ppl(
@@ -48,10 +55,10 @@ def eval_ppl(
     dataset="wikitext2-v1",
     input_len: int = 2048,
 ):
-    if dataset not in DATASET_CACHE:
-        raise RuntimeError(f"{dataset} invalid")
-
-    testenc = get_c4(tokenizer, input_len)
+    if "wiki" in dataset:
+        testenc = get_wikitext2(tokenizer, input_len)
+    else:
+        testenc = get_c4(tokenizer, input_len)
 
     nsamples = testenc.numel() // input_len
     nlls = []
@@ -120,7 +127,7 @@ if __name__ == "__main__":
     input_len = model_to_len[model_name]
 
     # 1. fp16 baseline
-    fp16_ppl = eval_ppl(model, tokenizer, input_len=input_len)
+    fp16_ppl = eval_ppl(model, tokenizer, dataset="wiki2", input_len=input_len)
 
     # 2. create ModelKVCacheManager
     kv_managers_lis: list[ModelKVCacheManager] = []
@@ -154,4 +161,4 @@ if __name__ == "__main__":
         model_kv_manager.full_prefill(False)
         plug_quantizer_into_model(model, model_kv_manager)
         print(model_kv_manager)
-        ppl = eval_ppl(model, tokenizer, input_len=input_len)
+        ppl = eval_ppl(model, tokenizer, dataset="wiki2", input_len=input_len)
