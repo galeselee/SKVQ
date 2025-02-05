@@ -184,18 +184,18 @@ MODEL_TO_REORDER = {
         # 32: {
         #     "minmax": f"{CALIB_DIR}/llama3-8b-redpajama-n128-len4096-minmax-rod_idx-cluster_32.pt",
         # },
-        256: {
-            "minmax": f"{CALIB_DIR}/llama3-8b-c4-n128-len4096-minmax-rod_idx-cluster_4.pt",
-        },
-        128: {
-            "minmax": f"{CALIB_DIR}/llama3-8b-c4-n128-len4096-minmax-rod_idx-cluster_8.pt",
-        },
+        # 256: {
+        #     "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n16-len2048-minmax-rod_idx-cluster_4.pt",
+        # },
+        # 128: {
+        #     "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n16-len2048-minmax-rod_idx-cluster_8.pt",
+        # },
         64: {
-            "minmax": f"{CALIB_DIR}/llama3-8b-c4-n128-len4096-minmax-rod_idx-cluster_16.pt",
+            "minmax": f"{CALIB_DIR}/llama3-8b-c4-n16-len2048-minmax-rod_idx-cluster_16.pt",
         },
-        32: {
-            "minmax": f"{CALIB_DIR}/llama3-8b-c4-n128-len4096-minmax-rod_idx-cluster_32.pt",
-        },
+        # 32: {
+        #     "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n16-len2048-minmax-rod_idx-cluster_32.pt",
+        # },
     },
     "llama31-8b": {
         256: {

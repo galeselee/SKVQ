@@ -103,13 +103,17 @@ def get_data(
 
     seed = 0
     if dataset == "wikitext2-v1":
+        print("Calibration with wikitext2")
         data = get_wikitext2(seed, nsample, sample_len, tokenizer)
     elif dataset == "ptb":
+        print("Calibration with ptb")
         data = get_ptb(seed, nsample, sample_len, tokenizer)
     elif dataset == "redpajama":
+        print("Calibration with redpajama")
         data = get_redpajama(seed, nsample, sample_len, tokenizer)
     elif dataset == "c4":
-        data = get_redpajama(seed, nsample, sample_len, tokenizer)
+        print("Calibration with c4")
+        data = get_c4(seed, nsample, sample_len, tokenizer)
     else:
         raise RuntimeError("Not supported")
 
@@ -381,20 +385,20 @@ if __name__ == "__main__":
     model_name = args.model_name
 
     model_to_data_size = {
-        "llama2-7b": (4096, 128),
-        "llama2-7b-32k": (4096, 128),
-        "llama2-7b-80k": (4096, 128),
-        "llama2-7b-chat": (4096, 128),
-        "llama2-13b": (4096, 128),
-        "llama2-13b-chat": (4096, 128),
-        "llama2-70b": (4096, 128),
-        "llama3-70b-instruct": (4096, 128),
-        "llama3-8b": (4096, 128),
-        "llama31-8b": (4096, 128),
-        "mistral-7b": (4096, 128),
-        "mistral-7b-instruct-v0.2": (4096, 128),
-        "longchat-v1.5-7b-32k": (4096, 128),
-        "vicuna-v1.5-7b-16k": (4096, 128),
+        "llama2-7b": (2048, 16),
+        "llama2-7b-32k": (2048, 16),
+        "llama2-7b-80k": (2048, 16),
+        "llama2-7b-chat": (2048, 16),
+        "llama2-13b": (2048, 16),
+        "llama2-13b-chat": (2048, 16),
+        "llama2-70b": (2048, 16),
+        "llama3-70b-instruct": (2048, 16),
+        "llama3-8b": (2048, 16),
+        "llama31-8b": (2048, 16),
+        "mistral-7b": (2048, 16),
+        "mistral-7b-instruct-v0.2": (2048, 16),
+        "longchat-v1.5-7b-32k": (2048, 16),
+        "vicuna-v1.5-7b-16k": (2048, 16),
     }
 
     model_path = MODEL_NAME_TO_PATH[model_name]

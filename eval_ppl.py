@@ -127,7 +127,7 @@ if __name__ == "__main__":
     input_len = model_to_len[model_name]
 
     # 1. fp16 baseline
-    fp16_ppl = eval_ppl(model, tokenizer, dataset="wiki2", input_len=input_len)
+    # fp16_ppl = eval_ppl(model, tokenizer, dataset="wiki2", input_len=input_len)
 
     # 2. create ModelKVCacheManager
     kv_managers_lis: list[ModelKVCacheManager] = []
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     for group_size in group_set:
         rod_meta = MODEL_TO_REORDER[model_name][group_size]["minmax"]
         for kbits, vbits in [
-            (2,2), (1,1)
+             (1,1)
         ]:
             kv_managers_lis.append(
                 ModelKVCacheManager.create(
@@ -161,4 +161,4 @@ if __name__ == "__main__":
         model_kv_manager.full_prefill(False)
         plug_quantizer_into_model(model, model_kv_manager)
         print(model_kv_manager)
-        ppl = eval_ppl(model, tokenizer, dataset="wiki2", input_len=input_len)
+        ppl = eval_ppl(model, tokenizer, dataset="c4", input_len=input_len)
