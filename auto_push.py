@@ -13,4 +13,4 @@ def run_git_commands():
 if __name__ == "__main__":
     while True:
         run_git_commands()
-        time.sleep(10)
+        time.sleep(100)
