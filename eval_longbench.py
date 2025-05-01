@@ -212,9 +212,6 @@ def get_quantizer_from_str(
 
 
 def load_model_custom(model_name: str, model_path: str, quant_scheme: str):
-    assert any(
-        ["llama" in model_path.lower(), "vicuna" in model_path, "longchat" in model_path, "mistral" in model_path]
-    ), "only support `llama` and `mistral` now"
 
     tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False, trust_remote_code=True)
     if "mistral" in model_name:
