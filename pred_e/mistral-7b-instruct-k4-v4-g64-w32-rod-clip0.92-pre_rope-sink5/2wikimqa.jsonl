@@ -243,3 +243,10 @@
 {"pred": "Joseph Smith was born in Sharon, Vermont.", "answers": ["Sharon"], "all_classes": null, "length": 11719}
 {"pred": "Maihaugen and Norwegian Museum of Cultural History", "answers": ["Cahiers du cinéma"], "all_classes": null, "length": 9455}
 {"pred": "Isabeau of Bavaria", "answers": ["Taddea Visconti"], "all_classes": null, "length": 10129}
+{"pred": "Gregg Fitzgerald (the director of War of the Buttons (1994 film)) was born in Ireland.", "answers": ["Buffalo, New York"], "all_classes": null, "length": 10959}
+{"pred": "Chuck Berry was born in St. Louis, Missouri.", "answers": ["St. Louis, Missouri"], "all_classes": null, "length": 8217}
+{"pred": "Philadelphia, Pennsylvania", "answers": ["Lodi, New Jersey"], "all_classes": null, "length": 8102}
+{"pred": "Not provided in the passages.", "answers": ["Paris"], "all_classes": null, "length": 9037}
+{"pred": "King Harald Hardrada", "answers": ["Varangian Guard"], "all_classes": null, "length": 10683}
+{"pred": "The Adventures Of Nellie Bly", "answers": ["The Adventures Of Nellie Bly"], "all_classes": null, "length": 8890}
+{"pred": "The performer of the song Just Playing (Dreams), The Notorious B.I.G., was murdered by an unidentified assail", "answers": ["drive-by shooting"], "all_classes": null, "length": 9857}

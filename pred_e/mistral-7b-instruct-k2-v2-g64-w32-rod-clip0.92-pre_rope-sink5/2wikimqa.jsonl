@@ -249,3 +249,10 @@
 {"pred": "Not provided in the passages.", "answers": ["Paris"], "all_classes": null, "length": 9037}
 {"pred": "King Harald Hardrada", "answers": ["Varangian Guard"], "all_classes": null, "length": 10683}
 {"pred": "The Adventures Of Nellie Bly", "answers": ["The Adventures Of Nellie Bly"], "all_classes": null, "length": 8890}
+{"pred": "The performer of \"Just Playing (Dreams)\", The Notorious B.I.G., was murdered by an unidentified assailant", "answers": ["drive-by shooting"], "all_classes": null, "length": 9857}
+{"pred": "Brink Of Life (director Ingmar Bergman died in 2007)", "answers": ["Brink Of Life"], "all_classes": null, "length": 9121}
+{"pred": "In Portugal, on January 7, 1830.", "answers": ["Queluz"], "all_classes": null, "length": 9472}
+{"pred": "Lethal Weapon 2", "answers": ["Lethal Weapon 2"], "all_classes": null, "length": 11357}
+{"pred": "Santa And The Fairy Snow Queen", "answers": ["Hearts In Bondage"], "all_classes": null, "length": 9596}
+{"pred": "Je Suis Né D'Une Cigogne", "answers": ["Je Suis Né D'Une Cigogne"], "all_classes": null, "length": 10771}
+{"pred": "Orgueilleuse d'Harenc", "answers": ["Constance of Antioch"], "all_classes": null, "length": 9189}
