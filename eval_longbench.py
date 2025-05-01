@@ -5,7 +5,7 @@ import numpy as np
 import random
 import argparse
 
-from datasets import load_dataset
+from datasets import load_dataset, load_from_disk
 from tqdm import tqdm
 from transformers import AutoTokenizer, LlamaTokenizer, AutoModelForCausalLM
 
@@ -18,37 +18,53 @@ from experiments.utils import plug_quantizer_into_model
 
 def parse_args(args=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_name', type=str, default=None, choices=["mistral-7b-instruct-v0.2", "llama3-70b-instruct", "llama2-70b", "llama2-7b", "llama2-13b", "llama2-7b-chat", "llama2-13b-chat", "llama2-7b-chat-4k", "mistral-7b-instruct", "llama2-13b-chat-4k", "llama2-7b-4k", "longchat-v1.5-7b-32k", "xgen-7b-8k", "internlm-7b-8k", "mistral-7b", "chatglm2-6b", "chatglm2-6b-32k", "chatglm3-6b-32k", "vicuna-v1.5-7b-16k"])
-    parser.add_argument('--e', action='store_true', help="Evaluate on LongBench-E")
+    parser.add_argument('--model_name', type=str, default=None, choices=["mistral-7b-instruct", "llama3-instruct"])
     parser.add_argument('--quant', default=None)
     return parser.parse_args(args)
 
-# This is the customized building prompt for chat models
+# # This is the customized building prompt for chat models
+# def build_chat(tokenizer, prompt, model_name):
+#     if "chatglm3" in model_name:
+#         prompt = tokenizer.build_chat_input(prompt)
+#     elif "chatglm" in model_name:
+#         prompt = tokenizer.build_prompt(prompt)
+#     elif "longchat" in model_name or "vicuna" in model_name:
+#         from fastchat.model import get_conversation_template
+#         conv = get_conversation_template("vicuna")
+#         conv.append_message(conv.roles[0], prompt)
+#         conv.append_message(conv.roles[1], None)
+#         prompt = conv.get_prompt()
+#     elif "llama2-7b-80k" in model_name:
+#         prompt = f"<|im_start|> {prompt}"
+#     elif "llama2" in model_name:
+#         prompt = f"[INST]{prompt}[/INST]"
+#     elif "mistral" in model_name and "instruct" in model_name:
+#         prompt = f"[INST]{prompt}[/INST]"
+#     elif "xgen" in model_name:
+#         header = (
+#             "A chat between a curious human and an artificial intelligence assistant. "
+#             "The assistant gives helpful, detailed, and polite answers to the human's questions.\n\n"
+#         )
+#         prompt = header + f" ### Human: {prompt}\n###"
+#     elif "internlm" in model_name:
+#         prompt = f"<|User|>:{prompt}<eoh>\n<|Bot|>:"
+#     return prompt
+
 def build_chat(tokenizer, prompt, model_name):
-    if "chatglm3" in model_name:
-        prompt = tokenizer.build_chat_input(prompt)
-    elif "chatglm" in model_name:
-        prompt = tokenizer.build_prompt(prompt)
-    elif "longchat" in model_name or "vicuna" in model_name:
-        from fastchat.model import get_conversation_template
-        conv = get_conversation_template("vicuna")
-        conv.append_message(conv.roles[0], prompt)
-        conv.append_message(conv.roles[1], None)
-        prompt = conv.get_prompt()
-    elif "llama2-7b-80k" in model_name:
-        prompt = f"<|im_start|> {prompt}"
-    elif "llama2" in model_name:
-        prompt = f"[INST]{prompt}[/INST]"
-    elif "mistral" in model_name and "instruct" in model_name:
-        prompt = f"[INST]{prompt}[/INST]"
-    elif "xgen" in model_name:
-        header = (
-            "A chat between a curious human and an artificial intelligence assistant. "
-            "The assistant gives helpful, detailed, and polite answers to the human's questions.\n\n"
-        )
-        prompt = header + f" ### Human: {prompt}\n###"
-    elif "internlm" in model_name:
-        prompt = f"<|User|>:{prompt}<eoh>\n<|Bot|>:"
+    if "llama" in model_name.lower():
+        messages = [
+            {"role": "user", "content": prompt},
+        ]
+        prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        print("i'm here")
+    elif "mistral" in model_name.lower():
+        messages = [
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ]
+        prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
     return prompt
 
 
@@ -128,36 +144,9 @@ def seed_everything(seed):
     torch.backends.cudnn.deterministic = True
     torch.cuda.manual_seed_all(seed)
 
-
-def load_model_and_tokenizer(path, model_name, device):
-    if "chatglm" in model_name or "internlm" in model_name or "xgen" in model_name:
-        tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True)
-        model = AutoModelForCausalLM.from_pretrained(path, trust_remote_code=True, torch_dtype=torch.bfloat16).to(device)
-    elif "llama2" in model_name:
-        # replace_llama_attn_with_flash_attn()
-        tokenizer = LlamaTokenizer.from_pretrained(path)
-        model = LlamaForCausalLM.from_pretrained(path, torch_dtype=torch.bfloat16).to(device)
-    elif "longchat" in model_name or "vicuna" in model_name:
-        from fastchat.model import load_model
-        # replace_llama_attn_with_flash_attn()
-        model, _ = load_model(
-            path,
-            device='cpu',
-            num_gpus=0,
-            load_8bit=False,
-            cpu_offloading=False,
-            debug=False,
-        )
-        model = model.to(device)
-        model = model.bfloat16()
-        tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True, use_fast=False)
-    model = model.eval()
-    return model, tokenizer
-
-
 def get_quantizer_from_str(
-    s: str, model: LlamaForCausalLM|MistralForCausalLM, model_name: str
-) -> ModelKVCacheManager|None:
+    s: str, model, model_name: str
+) -> ModelKVCacheManager:
     """
     example: "k2-v2-g128-w128-reoder-pre_rope"
              "k2-v2-g128-w128-reoder-clip-pre_rope"
@@ -251,39 +240,14 @@ def load_model_custom(model_name: str, model_path: str, quant_scheme: str):
     return model, tokenizer, fake_quantizer
 
 
-def load_dataset_wrapper(dataset: str):
-    dataset_path = {
-        "qasper":       "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/qasper/1.0.0/4a916a4bde5c3481ac49b84d5dde69a9d2eefcd67f884ef65b3d97ee7cc91f3e",
-        "qmsum":        "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/qmsum/1.0.0/4a916a4bde5c3481ac49b84d5dde69a9d2eefcd67f884ef65b3d97ee7cc91f3e",
-        "multi_news":   "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/multi_news/1.0.0/4a916a4bde5c3481ac49b84d5dde69a9d2eefcd67f884ef65b3d97ee7cc91f3e",
-        "lcc":          "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/lcc/1.0.0/4a916a4bde5c3481ac49b84d5dde69a9d2eefcd67f884ef65b3d97ee7cc91f3e",
-        "repobench-p":  "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/repobench-p/1.0.0/4a916a4bde5c3481ac49b84d5dde69a9d2eefcd67f884ef65b3d97ee7cc91f3e",
-        "samsum":       "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/samsum/1.0.0/4a916a4bde5c3481ac49b84d5dde69a9d2eefcd67f884ef65b3d97ee7cc91f3e",
-        "trec":         "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/trec/1.0.0/4a916a4bde5c3481ac49b84d5dde69a9d2eefcd67f884ef65b3d97ee7cc91f3e",
-        "triviaqa":     "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/triviaqa/1.0.0/4a916a4bde5c3481ac49b84d5dde69a9d2eefcd67f884ef65b3d97ee7cc91f3e",
-        "2wikimqa":     "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/2wikimqa/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "dureader":     "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/dureader/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "gov_report":   "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/gov_report/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "hotpotqa":     "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/hotpotqa/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "lsht":         "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/lsht/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "multifieldqa_en": "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/multifieldqa_en/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "multifieldqa_zh": "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/multifieldqa_zh/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "musique":      "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/musique/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "narrativeqa":  "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/narrativeqa/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "passage_count": "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/passage_count/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "passage_retrieval_en": "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/passage_retrieval_en/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "passage_retrieval_zh": "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/passage_retrieval_zh/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-        "vcsum":         "YOUR_PATH_TO/.cache/huggingface/datasets/THUDM___long_bench/vcsum/1.0.0/f72191f71cd6fcd0da8a54f0915078efda579449",
-    }
-    return load_dataset(dataset_path[dataset], split="test")
 
 if __name__ == '__main__':
     seed_everything(42)
     args = parse_args()
     world_size = torch.cuda.device_count()
     # PROJ_DIR = os.path.dirname(__file__)
-    model2path = json.load(open(f"{PROJ_DIR}/longbench_config/model2path.json", "r"))
-    model2maxlen = json.load(open(f"{PROJ_DIR}/longbench_config/model2maxlen.json", "r"))
+    model2path = json.load(open(f"./longbench_config/model2path.json", "r"))
+    model2maxlen = json.load(open(f"./longbench_config/model2maxlen.json", "r"))
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     model_name = args.model_name
@@ -294,24 +258,22 @@ if __name__ == '__main__':
     model_path = model2path[model_name]
 
     # get quantizer
-    if model_name == "llama2-7b-chat-4k":
-        model_name = "llama2-7b-chat"
-    elif model_name == "llama2-13b-chat-4k":
-        model_name = "llama2-13b-chat"
-    elif model_name == "mistral-7b-instruct":
-        model_name = "mistral-7b-instruct-v0.2"
-    else:
-        model_name = model_name
+    # if model_name == "llama2-7b-chat-4k":
+    #     model_name = "llama2-7b-chat"
+    # elif model_name == "llama2-13b-chat-4k":
+    #     model_name = "llama2-13b-chat"
+    # elif model_name == "mistral-7b-instruct":
+    #     model_name = "mistral-7b-instruct-v0.2"
+    # else:
+    #     model_name = model_name
 
     # fake_quantizer = get_quantizer_from_str(quant_scheme, name)
 
-    if args.e:
-        datasets = ["qasper", "multifieldqa_en", "hotpotqa", "2wikimqa", "gov_report", "multi_news", \
+    datasets = ["qasper", "multifieldqa_en", "hotpotqa", "2wikimqa", "gov_report", "multi_news", \
             "trec", "triviaqa", "samsum", "passage_count", "passage_retrieval_en", "lcc", "repobench-p"]
         # datasets = ["qasper", "multifieldqa_en", "hotpotqa", "2wikimqa", "gov_report", "multi_news", \
         #     "trec", "triviaqa", "samsum", "passage_count", "passage_retrieval_en"]
         # datasets = ["hotpotqa"]
-    else:
         # datasets = ["narrativeqa", "qasper", "multifieldqa_en", "multifieldqa_zh", "hotpotqa", "2wikimqa", "musique", \
         #             "dureader", "gov_report", "qmsum", "multi_news", "vcsum", "trec", "triviaqa", "samsum", "lsht", \
         #             "passage_count", "passage_retrieval_en", "passage_retrieval_zh", "lcc", "repobench-p"]
@@ -322,17 +284,6 @@ if __name__ == '__main__':
         #     "multifieldqa_zh", "hotpotqa", "musique", "dureader", "lsht",
         #     # "narrativeqa", "vcsum", "passage_count", "passage_retrieval_zh",
         # ]
-        datasets = [
-            "gov_report",
-            "multifieldqa_zh",
-            "lcc", 
-            "repobench-p", 
-            "passage_retrieval_en", "trec", 
-
-            # "2wikimqa", 
-            # "qasper", "triviaqa", "multifieldqa_en",
-            # "qmsum", "samsum", "multi_news", "musique",
-        ]
 
     # we design specific prompt format and max generation length for each task, feel free to modify them to optimize model output
     dataset2prompt = json.load(open(f"{PROJ_DIR}/longbench_config/dataset2prompt.json", "r"))
@@ -343,17 +294,10 @@ if __name__ == '__main__':
 
     quant_tag = f"-{fake_quantizer.tag()}" if (quant_scheme and quant_scheme != "None") else ""
     for dataset in datasets:
-        if args.e:
-            data = load_dataset('THUDM/LongBench', f"{dataset}_e", split='test')
-            if not os.path.exists(f"pred_e/{model_name}{quant_tag}"):
-                os.makedirs(f"pred_e/{model_name}{quant_tag}")
-            out_path = f"pred_e/{model_name}{quant_tag}/{dataset}.jsonl"
-        else:
-            # data = load_dataset('THUDM/LongBench', dataset, split='test')
-            data = load_dataset_wrapper(dataset)
-            if not os.path.exists(f"longbench_out/pred/{model_name}{quant_tag}"):
-                os.makedirs(f"longbench_out/pred/{model_name}{quant_tag}")
-            out_path = f"longbench_out/pred/{model_name}{quant_tag}/{dataset}.jsonl"
+        data = load_from_disk(f"/data/user/user93/data/longbench_local/{dataset}")
+        if not os.path.exists(f"pred_e/{model_name}{quant_tag}"):
+            os.makedirs(f"pred_e/{model_name}{quant_tag}")
+        out_path = f"pred_e/{model_name}{quant_tag}/{dataset}.jsonl"
         prompt_format = dataset2prompt[dataset]
         max_gen = dataset2maxlen[dataset]
 

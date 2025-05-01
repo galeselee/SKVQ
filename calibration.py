@@ -399,6 +399,8 @@ if __name__ == "__main__":
         "mistral-7b-instruct-v0.2": (2048, 16),
         "longchat-v1.5-7b-32k": (2048, 16),
         "vicuna-v1.5-7b-16k": (2048, 16),
+        "llama3-instruct": (2048, 16),
+        "mistral-7b-instruct": (2048, 16),
     }
 
     model_path = MODEL_NAME_TO_PATH[model_name]

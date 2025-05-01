@@ -5,10 +5,9 @@ import operator
 
 import skvq_quant
 
-from typing import Literal, TypeAlias
+from typing import Literal
 from transformers import PreTrainedModel, LlamaForCausalLM, MistralForCausalLM
 
-RodMeta: TypeAlias = tuple[dict[str, torch.Tensor], dict[str, torch.Tensor]]
 
 class SKVQuantProcessor(nn.Module):
     def __init__(
@@ -18,8 +17,8 @@ class SKVQuantProcessor(nn.Module):
         gsize: int,
         hidden: int,
         clipping: list[float] = None,
-        reorder_meta: RodMeta = None,
-        smooth_scale: RodMeta = None,
+        reorder_meta: tuple[dict[str, torch.Tensor], dict[str, torch.Tensor]] = None,
+        smooth_scale: tuple[dict[str, torch.Tensor], dict[str, torch.Tensor]] = None,
         KIVI_mode: bool = False,
         fp8:bool = False,
         fake_quant: bool = True,
