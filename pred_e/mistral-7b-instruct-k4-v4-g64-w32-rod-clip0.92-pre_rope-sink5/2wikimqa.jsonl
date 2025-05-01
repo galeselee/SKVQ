@@ -286,3 +286,15 @@
 {"pred": "No. Extract (Film) is directed by Mike Judge (American) and Thou Wast Mild And Lovely is directed by Josephine De", "answers": ["yes"], "all_classes": null, "length": 9434}
 {"pred": "Murder", "answers": ["drive-by shooting"], "all_classes": null, "length": 11104}
 {"pred": "Elwood, Indiana", "answers": ["Elwood, Indiana"], "all_classes": null, "length": 12233}
+{"pred": "Erode, Madras Presidency (now Tamil Nadu, India)", "answers": ["Erode"], "all_classes": null, "length": 11410}
+{"pred": "593 (according to the given passages)", "answers": ["Warsaw"], "all_classes": null, "length": 10632}
+{"pred": "Luftwaffe Commander-in-Chief", "answers": ["Gestapo"], "all_classes": null, "length": 11119}
+{"pred": "Ludwig Ii, King Of Bavaria (1955) was directed by Helmut Käutner, not William Dieterle who directed", "answers": ["Meyer From Berlin"], "all_classes": null, "length": 11563}
+{"pred": "Not provided in the passages.", "answers": ["Kennedy Center Honors"], "all_classes": null, "length": 11443}
+{"pred": "No. Big Pal is from America and The Invisible Man Attacks is from Argentina.", "answers": ["no"], "all_classes": null, "length": 12093}
+{"pred": "Ron Cyrus", "answers": ["Billy Ray Cyrus"], "all_classes": null, "length": 12120}
+{"pred": "Naples, Florida", "answers": ["Naples"], "all_classes": null, "length": 10043}
+{"pred": "Not provided in the passages.", "answers": ["Gloria Loring"], "all_classes": null, "length": 9331}
+{"pred": "Isa Bey", "answers": ["Gülçiçek Hatun"], "all_classes": null, "length": 9895}
+{"pred": "Germany", "answers": ["Bevern"], "all_classes": null, "length": 8832}
+{"pred": "Beaulieu-sur-Loire", "answers": ["Venice"], "all_classes": null, "length": 8872}

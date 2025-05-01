@@ -293,3 +293,8 @@
 {"pred": "Not provided in the passages.", "answers": ["Kennedy Center Honors"], "all_classes": null, "length": 11443}
 {"pred": "No. Big Pal is from America and The Invisible Man Attacks is from Argentina.", "answers": ["no"], "all_classes": null, "length": 12093}
 {"pred": "Ron Cyrus", "answers": ["Billy Ray Cyrus"], "all_classes": null, "length": 12120}
+{"pred": "Naples, Florida", "answers": ["Naples"], "all_classes": null, "length": 10043}
+{"pred": "Not provided in the passages.", "answers": ["Gloria Loring"], "all_classes": null, "length": 9331}
+{"pred": "Isa Bey, the ruler of the Aydinids.", "answers": ["Gülçiçek Hatun"], "all_classes": null, "length": 9895}
+{"pred": "Germany", "answers": ["Bevern"], "all_classes": null, "length": 8832}
+{"pred": "Beaulieu-sur-Loire", "answers": ["Venice"], "all_classes": null, "length": 8872}
