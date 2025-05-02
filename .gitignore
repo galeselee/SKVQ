@@ -6,7 +6,6 @@ build
 dist
 opt175b
 *.txt
-*.pt
 *egg-info*
 *.csv
 *.jpg
