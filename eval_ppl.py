@@ -161,4 +161,4 @@ if __name__ == "__main__":
         model_kv_manager.full_prefill(False)
         plug_quantizer_into_model(model, model_kv_manager)
         print(model_kv_manager)
-        ppl = eval_ppl(model, tokenizer, dataset="wikitext2", input_len=input_len)
+        ppl = eval_ppl(model, tokenizer, dataset="c4", input_len=input_len)
