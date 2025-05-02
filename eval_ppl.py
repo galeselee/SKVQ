@@ -13,6 +13,7 @@ from experiments.modeling_llama_skvq import LlamaForCausalLM
 from experiments.utils import plug_quantizer_into_model
 from KVcache_manager import ModelKVCacheManager
 from calib_config import *
+from datasets import load_from_disk
 
 import random
 import torch
@@ -20,7 +21,8 @@ import torch
 def get_c4(tokenizer, seqlen):
     from datasets import load_dataset
 
-    valdata = load_dataset('allenai/c4', data_files={'validation': 'en/c4-validation.00000-of-00008.json.gz'}, split='validation', num_proc=48)
+#    valdata = load_dataset('allenai/c4', data_files={'validation': 'en/c4-validation.00000-of-00008.json.gz'}, split='validation', num_proc=48)
+    valdata = load_from_disk("~/c4")
 
     import random
     random.seed(0)
