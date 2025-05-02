@@ -136,7 +136,7 @@ if __name__ == "__main__":
     for group_size in group_set:
         rod_meta = MODEL_TO_REORDER[model_name][group_size]["minmax"]
         for kbits, vbits in [
-             (1,1)
+            (4,4),(2,2), (1,1)
         ]:
             kv_managers_lis.append(
                 ModelKVCacheManager.create(
