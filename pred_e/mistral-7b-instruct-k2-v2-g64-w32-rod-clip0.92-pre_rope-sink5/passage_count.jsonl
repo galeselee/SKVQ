@@ -242,3 +242,59 @@
 {"pred": "21 unique paragraphs", "answers": ["20"], "all_classes": null, "length": 8951}
 {"pred": "12 unique paragraphs", "answers": ["14"], "all_classes": null, "length": 9763}
 {"pred": "11 unique paragraphs", "answers": ["7"], "all_classes": null, "length": 9759}
+{"pred": "11 unique paragraphs", "answers": ["9"], "all_classes": null, "length": 9137}
+{"pred": "15", "answers": ["6"], "all_classes": null, "length": 10249}
+{"pred": "10", "answers": ["2"], "all_classes": null, "length": 8941}
+{"pred": "12 unique paragraphs", "answers": ["22"], "all_classes": null, "length": 8514}
+{"pred": "11 unique paragraphs", "answers": ["11"], "all_classes": null, "length": 8152}
+{"pred": "11 unique paragraphs", "answers": ["12"], "all_classes": null, "length": 8688}
+{"pred": "9 unique paragraphs", "answers": ["5"], "all_classes": null, "length": 8498}
+{"pred": "16 unique paragraphs", "answers": ["29"], "all_classes": null, "length": 8645}
+{"pred": "10 unique paragraphs", "answers": ["22"], "all_classes": null, "length": 11162}
+{"pred": "12", "answers": ["12"], "all_classes": null, "length": 10081}
+{"pred": "11 unique paragraphs", "answers": ["26"], "all_classes": null, "length": 10280}
+{"pred": "14 unique paragraphs", "answers": ["13"], "all_classes": null, "length": 8684}
+{"pred": "9 unique paragraphs", "answers": ["11"], "all_classes": null, "length": 13417}
+{"pred": "10", "answers": ["19"], "all_classes": null, "length": 8691}
+{"pred": "11 unique paragraphs", "answers": ["26"], "all_classes": null, "length": 11059}
+{"pred": "11 unique paragraphs", "answers": ["5"], "all_classes": null, "length": 8434}
+{"pred": "11 unique paragraphs", "answers": ["18"], "all_classes": null, "length": 8701}
+{"pred": "11 unique paragraphs", "answers": ["24"], "all_classes": null, "length": 10126}
+{"pred": "10", "answers": ["18"], "all_classes": null, "length": 9867}
+{"pred": "10 unique paragraphs", "answers": ["17"], "all_classes": null, "length": 8302}
+{"pred": "21 unique paragraphs", "answers": ["17"], "all_classes": null, "length": 8195}
+{"pred": "14", "answers": ["13"], "all_classes": null, "length": 10708}
+{"pred": "13 unique paragraphs", "answers": ["15"], "all_classes": null, "length": 8257}
+{"pred": "14 unique paragraphs", "answers": ["20"], "all_classes": null, "length": 9017}
+{"pred": "10 unique paragraphs", "answers": ["21"], "all_classes": null, "length": 8698}
+{"pred": "11 unique paragraphs", "answers": ["24"], "all_classes": null, "length": 8334}
+{"pred": "14 unique paragraphs", "answers": ["7"], "all_classes": null, "length": 8108}
+{"pred": "11 unique paragraphs", "answers": ["15"], "all_classes": null, "length": 9051}
+{"pred": "14", "answers": ["12"], "all_classes": null, "length": 8716}
+{"pred": "13 unique paragraphs", "answers": ["13"], "all_classes": null, "length": 8995}
+{"pred": "14 unique paragraphs", "answers": ["29"], "all_classes": null, "length": 10039}
+{"pred": "13 unique paragraphs", "answers": ["11"], "all_classes": null, "length": 8352}
+{"pred": "13 unique paragraphs", "answers": ["30"], "all_classes": null, "length": 9681}
+{"pred": "13 unique paragraphs", "answers": ["3"], "all_classes": null, "length": 10058}
+{"pred": "11 unique paragraphs", "answers": ["12"], "all_classes": null, "length": 11296}
+{"pred": "10 unique paragraphs", "answers": ["24"], "all_classes": null, "length": 8329}
+{"pred": "11 unique paragraphs", "answers": ["3"], "all_classes": null, "length": 9199}
+{"pred": "11 unique paragraphs", "answers": ["11"], "all_classes": null, "length": 9365}
+{"pred": "10 unique paragraphs", "answers": ["6"], "all_classes": null, "length": 9245}
+{"pred": "19", "answers": ["6"], "all_classes": null, "length": 11832}
+{"pred": "11 unique paragraphs", "answers": ["20"], "all_classes": null, "length": 9904}
+{"pred": "12 unique paragraphs", "answers": ["15"], "all_classes": null, "length": 8089}
+{"pred": "14 unique paragraphs", "answers": ["26"], "all_classes": null, "length": 9587}
+{"pred": "11 unique paragraphs", "answers": ["17"], "all_classes": null, "length": 9763}
+{"pred": "9 unique paragraphs", "answers": ["7"], "all_classes": null, "length": 8123}
+{"pred": "14 unique paragraphs", "answers": ["4"], "all_classes": null, "length": 8809}
+{"pred": "10", "answers": ["8"], "all_classes": null, "length": 9044}
+{"pred": "10 unique paragraphs", "answers": ["22"], "all_classes": null, "length": 8393}
+{"pred": "17 unique paragraphs", "answers": ["14"], "all_classes": null, "length": 9224}
+{"pred": "11 unique paragraphs", "answers": ["24"], "all_classes": null, "length": 8844}
+{"pred": "14 unique paragraphs", "answers": ["16"], "all_classes": null, "length": 8534}
+{"pred": "11", "answers": ["3"], "all_classes": null, "length": 9720}
+{"pred": "10", "answers": ["12"], "all_classes": null, "length": 8803}
+{"pred": "10", "answers": ["7"], "all_classes": null, "length": 12180}
+{"pred": "11 unique paragraphs", "answers": ["13"], "all_classes": null, "length": 9896}
+{"pred": "11 unique paragraphs", "answers": ["10"], "all_classes": null, "length": 8745}
