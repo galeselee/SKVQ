@@ -196,7 +196,7 @@ MODEL_TO_REORDER = {
         #     "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n16-len2048-minmax-rod_idx-cluster_8.pt",
         # },
         64: {
-            "minmax": f"{CALIB_DIR}/llama3-8b-c4-n16-len2048-minmax-rod_idx-cluster_16.pt",
+            "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n16-len2048-minmax-rod_idx-cluster_16.pt",
         },
         # 32: {
         #     "minmax": f"{CALIB_DIR}/llama3-8b-wikitext2-v1-n16-len2048-minmax-rod_idx-cluster_32.pt",
