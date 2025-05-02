@@ -105,7 +105,7 @@ def get_pred(model_name: str, model: LlamaForCausalLM, tokenizer: LlamaTokenizer
                     max_new_tokens=max_gen,
                     num_beams=1,
                     do_sample=False,
-                    temperature=1.0,
+                    temperature=0.0,
                     min_length=context_length+1,
                     eos_token_id=[tokenizer.eos_token_id, tokenizer.encode("\n", add_special_tokens=False)[-1]],
                     pad_token_id=tokenizer.eos_token_id,
@@ -116,7 +116,7 @@ def get_pred(model_name: str, model: LlamaForCausalLM, tokenizer: LlamaTokenizer
                     max_new_tokens=max_gen,
                     num_beams=1,
                     do_sample=False,
-                    temperature=1.0,
+                    temperature=0.0,
                     pad_token_id=tokenizer.eos_token_id,
                 )[0]
             if model.model_kv_manager is not None:
