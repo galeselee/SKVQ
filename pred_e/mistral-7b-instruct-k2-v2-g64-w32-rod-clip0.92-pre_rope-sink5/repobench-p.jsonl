@@ -1,0 +1,2 @@
+{"pred": "```\n\t\t\t\tb0 = b1;\n\t\t\t\tb1.position(s1 + r0);\n\t\t\t\tcq.poll();\n\t\t\t}\n\t\t}```\n\nThis code is merging multiple `ByteBuffer` objects in the client", "answers": ["\t\t\t\tBufferTools.returnBuffer(b1);\r"], "all_classes": null, "length": 2646}
+{"pred": "\t\tself._combo_box = QComboBox()\n\t\tself._combo_box.currentIndexChanged.connect(self.on_combo_box_changed)\n\t\tself._combo_box.setEditable(True)\n\t\tself._combo_", "answers": ["\t\tself._caption_label.setMinimumWidth(100*gui_scale())"], "all_classes": null, "length": 2012}
