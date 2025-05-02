@@ -10,7 +10,7 @@ DATASET_CACHE = {
 
 MODEL_NAME_TO_PATH = {
     "llama-7b": "YOUR_PATH_TO/llama-7b",
-    "llama2-7b": "/data/user/user93/models/llama-2-7b",
+    "llama2-7b": "/data/user/user93/models/Llama-2-7b-hf",
     "llama2-7b-chat": "YOUR_PATH_TO/llama2-7b-chat",
     "llama2-7b-80k": "YOUR_PATH_TO/llama2-7b-80k",
     "llama2-7b-32k": "YOUR_PATH_TO/llama2-7b-32k",
@@ -21,7 +21,7 @@ MODEL_NAME_TO_PATH = {
     "llama3-8b": "/data/user/user93/models/Meta-Llama-3-8B",
     "llama31-8b": "/data/user/user93/models/Llama-3.1-8B",
     "llama3-instruct": "/data/user/user93/models/llama-3-8B-Instruct",
-    "mistral-7b": "/home/aiscuser/models/Mistral-7B",
+    "mistral-7b": "/data/user/user93/models/Mistral-7B",
     "mistral-7b-instruct": "/data/user/user93/models/Mistral-7B-Instruct",
     "mistral-7b-instruct-v0.2": "YOUR_PATH_TO/mistral-7b-instruct-v0.2",
     "vicuna-v1.5-7b-16k": "YOUR_PATH_TO/.cache/huggingface/hub/models--lmsys--vicuna-7b-v1.5-16k/snapshots/c8df3ca4436a3bce5c4b5877e0117032081852b4",
