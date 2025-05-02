@@ -161,3 +161,79 @@
 {"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["9"], "all_classes": null, "length": 7804}
 {"pred": "After removing duplicates, there are 6 unique paragraphs.assistant\n\n6assistant\n\nThe final answer is: 6assistant", "answers": ["18"], "all_classes": null, "length": 6496}
 {"pred": "After removing duplicates, there are 6 unique paragraphs.assistant\n\nThe final answer is: 6assistant\n\nI'm glad I", "answers": ["10"], "all_classes": null, "length": 6762}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["20"], "all_classes": null, "length": 6039}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["16"], "all_classes": null, "length": 4256}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["8"], "all_classes": null, "length": 7217}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["12"], "all_classes": null, "length": 4987}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["9"], "all_classes": null, "length": 6250}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["3"], "all_classes": null, "length": 6770}
+{"pred": "After removing duplicates, there are 11 unique paragraphs.assistant\n\nThe final answer is: 11assistant\n\nI'm glad I", "answers": ["20"], "all_classes": null, "length": 6245}
+{"pred": "After removing duplicates, there are 14 unique paragraphs.assistant\n\nThe final answer is: 14assistant\n\nI'm glad I", "answers": ["12"], "all_classes": null, "length": 6293}
+{"pred": "After removing duplicates, there are 2 unique paragraphs.assistant\n\nI apologize for the mistake. After re-checking, I found that there are", "answers": ["3"], "all_classes": null, "length": 5154}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\n7assistant\n\nThe final answer is: 7assistant", "answers": ["18"], "all_classes": null, "length": 4432}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe correct answer is: 7assistant\n\nI'm glad I", "answers": ["9"], "all_classes": null, "length": 4674}
+{"pred": "After removing duplicates, there are 11 unique paragraphs.assistant\n\nThe final answer is: 11assistant\n\nI'm glad I", "answers": ["14"], "all_classes": null, "length": 6726}
+{"pred": "After removing duplicates, there are 6 unique paragraphs.assistant\n\nThe final answer is: 6assistant\n\nI'm glad I", "answers": ["9"], "all_classes": null, "length": 4261}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["17"], "all_classes": null, "length": 7147}
+{"pred": "After removing duplicates, there are 11 unique paragraphs.assistant\n\nThe final answer is: 11assistant\n\nI'm glad I", "answers": ["22"], "all_classes": null, "length": 6252}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["14"], "all_classes": null, "length": 4690}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["3"], "all_classes": null, "length": 4069}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["4"], "all_classes": null, "length": 6407}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["10"], "all_classes": null, "length": 4196}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nThat's correct!", "answers": ["21"], "all_classes": null, "length": 6597}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["8"], "all_classes": null, "length": 6381}
+{"pred": "6assistant\n\nAfter removing duplicates, there are 6 unique paragraphs.assistant\n\nThat's correct! I'm glad I could help", "answers": ["13"], "all_classes": null, "length": 5795}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["17"], "all_classes": null, "length": 4713}
+{"pred": "After removing duplicates, there are 5 unique paragraphs.assistant\n\nThe final answer is: 5assistant\n\nI'm glad I", "answers": ["8"], "all_classes": null, "length": 6738}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe correct answer is: 4assistant\n\nI'm glad I", "answers": ["5"], "all_classes": null, "length": 4930}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["8"], "all_classes": null, "length": 6491}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["10"], "all_classes": null, "length": 4638}
+{"pred": "After removing duplicates, there are 14 unique paragraphs.assistant\n\nThe final answer is: 14assistant\n\nI'm glad I", "answers": ["20"], "all_classes": null, "length": 6540}
+{"pred": "After removing duplicates, there are 14 unique paragraphs.assistant\n\nThe final answer is: 14assistant\n\nI'm glad I", "answers": ["19"], "all_classes": null, "length": 7346}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["13"], "all_classes": null, "length": 6597}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nThat's correct!", "answers": ["9"], "all_classes": null, "length": 6934}
+{"pred": "After removing duplicates, there are 6 unique paragraphs.assistant\n\nThe final answer is: 6assistant\n\nI'm glad I", "answers": ["9"], "all_classes": null, "length": 4287}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["13"], "all_classes": null, "length": 5715}
+{"pred": "After removing duplicates, there are 5 unique paragraphs.assistant\n\nThe final answer is: 5assistant\n\nI'm glad I", "answers": ["14"], "all_classes": null, "length": 6301}
+{"pred": "After removing duplicates, there are 6 unique paragraphs.assistant\n\nThe final answer is: 6assistant\n\nI'm glad I", "answers": ["8"], "all_classes": null, "length": 6709}
+{"pred": "After removing duplicates, there are 6 unique paragraphs.assistant\n\nThe final answer is: 6assistant\n\nI'm glad I", "answers": ["19"], "all_classes": null, "length": 7683}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["6"], "all_classes": null, "length": 7505}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["3"], "all_classes": null, "length": 8657}
+{"pred": "After removing duplicates, there are 6 unique paragraphs.assistant\n\nThe final answer is: 6assistant\n\nI'm glad I", "answers": ["17"], "all_classes": null, "length": 8402}
+{"pred": "After removing duplicates, there are 14 unique paragraphs.assistant\n\nThe final answer is: 14assistant\n\nI'm glad I", "answers": ["18"], "all_classes": null, "length": 8602}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["6"], "all_classes": null, "length": 8559}
+{"pred": "After removing duplicates, there are 10 unique paragraphs.assistant\n\nThe final answer is: 10assistant\n\nI'm glad I", "answers": ["14"], "all_classes": null, "length": 8579}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["23"], "all_classes": null, "length": 8263}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["18"], "all_classes": null, "length": 9229}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["15"], "all_classes": null, "length": 9457}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["15"], "all_classes": null, "length": 9343}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["22"], "all_classes": null, "length": 9421}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nThat's correct!", "answers": ["26"], "all_classes": null, "length": 10930}
+{"pred": "After removing duplicates, there are 6 unique paragraphs.assistant\n\nThe final answer is: 6assistant\n\nI'm glad I", "answers": ["6"], "all_classes": null, "length": 9452}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["14"], "all_classes": null, "length": 8078}
+{"pred": "After removing duplicates, there are 5 unique paragraphs.assistant\n\nThe final answer is: 5assistant\n\nI'm glad I", "answers": ["18"], "all_classes": null, "length": 9464}
+{"pred": "After removing duplicates, there are 2 unique paragraphs.assistant\n\nThe final answer is: 2assistant\n\nI apologize for the", "answers": ["2"], "all_classes": null, "length": 14537}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["11"], "all_classes": null, "length": 8945}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["4"], "all_classes": null, "length": 8762}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["24"], "all_classes": null, "length": 9775}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["25"], "all_classes": null, "length": 9031}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["10"], "all_classes": null, "length": 9999}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["15"], "all_classes": null, "length": 10235}
+{"pred": "After removing duplicates, there are 2 unique paragraphs.assistant\n\nThe final answer is: 2assistant\n\nI apologize for the", "answers": ["2"], "all_classes": null, "length": 8606}
+{"pred": "After removing duplicates, there are 14 unique paragraphs.assistant\n\nThe final answer is: 14assistant\n\nI'm glad I", "answers": ["24"], "all_classes": null, "length": 8294}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["17"], "all_classes": null, "length": 8947}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["11"], "all_classes": null, "length": 9620}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["7"], "all_classes": null, "length": 11716}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI apologize for the", "answers": ["2"], "all_classes": null, "length": 12317}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["14"], "all_classes": null, "length": 9506}
+{"pred": "After removing duplicates, there are 14 unique paragraphs.assistant\n\nThe final answer is: 14assistant\n\nI'm glad I", "answers": ["30"], "all_classes": null, "length": 8555}
+{"pred": "After removing duplicates, there are 6 unique paragraphs.assistant\n\nThe final answer is: 6assistant\n\nI'm glad I", "answers": ["8"], "all_classes": null, "length": 9453}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["11"], "all_classes": null, "length": 8265}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["6"], "all_classes": null, "length": 9318}
+{"pred": "After removing duplicates, there are 3 unique paragraphs.assistant\n\nThe final answer is: 3assistant\n\nI'm glad I", "answers": ["2"], "all_classes": null, "length": 8121}
+{"pred": "After removing duplicates, there are 14 unique paragraphs.assistant\n\nThe final answer is: 14assistant\n\nI'm glad I", "answers": ["28"], "all_classes": null, "length": 8451}
+{"pred": "After removing duplicates, there are 14 unique paragraphs.assistant\n\nThe final answer is: 14assistant\n\nI'm glad I", "answers": ["24"], "all_classes": null, "length": 8386}
+{"pred": "After removing duplicates, there are 4 unique paragraphs.assistant\n\nThe final answer is: 4assistant\n\nI'm glad I", "answers": ["7"], "all_classes": null, "length": 12724}
+{"pred": "After removing duplicates, there are 8 unique paragraphs.assistant\n\nThe final answer is: 8assistant\n\nI'm glad I", "answers": ["6"], "all_classes": null, "length": 8572}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\n7assistant\n\nThe final answer is: 7assistant", "answers": ["14"], "all_classes": null, "length": 8524}
+{"pred": "After removing duplicates, there are 7 unique paragraphs.assistant\n\nThe final answer is: 7assistant\n\nI'm glad I", "answers": ["15"], "all_classes": null, "length": 8351}
