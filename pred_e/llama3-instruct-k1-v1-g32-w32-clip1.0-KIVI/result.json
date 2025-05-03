@@ -9,5 +9,7 @@
     "triviaqa": 25.61,
     "samsum": 11.1,
     "passage_count": 5.61,
-    "passage_retrieval_en": 18.34
+    "passage_retrieval_en": 17.21,
+    "lcc": 24.67,
+    "repobench-p": 18.56
 }

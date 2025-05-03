@@ -10,5 +10,6 @@
     "samsum": 40.8,
     "passage_count": 14.17,
     "passage_retrieval_en": 85.33,
-    "lcc": 55.12
+    "lcc": 60.53,
+    "repobench-p": 41.65
 }
