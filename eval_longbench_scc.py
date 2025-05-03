@@ -242,7 +242,7 @@ if __name__ == '__main__':
     seed_everything(42)
     args = parse_args()
     world_size = torch.cuda.device_count()
-    PROJ_DIR = os.path.dirname(__file__)
+    # PROJ_DIR = os.path.dirname(__file__)
     model2path = json.load(open(f"./longbench_config/model2path.json", "r"))
     model2maxlen = json.load(open(f"./longbench_config/model2maxlen.json", "r"))
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -291,7 +291,7 @@ if __name__ == '__main__':
 
     quant_tag = f"-{fake_quantizer.tag()}" if (quant_scheme and quant_scheme != "None") else ""
     for dataset in datasets:
-        data = load_from_disk(f"/home/zeyuli/longbench_local/{dataset}")
+        data = load_from_disk(f"/data/user/user93/data/longbench_local/{dataset}")
         if not os.path.exists(f"pred_e/{model_name}{quant_tag}"):
             os.makedirs(f"pred_e/{model_name}{quant_tag}")
         out_path = f"pred_e/{model_name}{quant_tag}/{dataset}.jsonl"
