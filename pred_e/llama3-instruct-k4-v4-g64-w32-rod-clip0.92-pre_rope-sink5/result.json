@@ -1,12 +1,7 @@
 {
-    "qasper": {
-        "0-4k": 13.08,
-        "4-8k": 13.2,
-        "8k+": 7.15
-    },
-    "multifieldqa_en": {
-        "0-4k": 21.56,
-        "4-8k": 19.2,
-        "8k+": 30.19
-    }
+    "hotpotqa": 11.07,
+    "multifieldqa_en": 20.39,
+    "qasper": 11.75,
+    "2wikimqa": 10.54,
+    "gov_report": 32.18
 }
