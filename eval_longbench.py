@@ -117,13 +117,14 @@ def get_pred(model_name: str, model: LlamaForCausalLM, tokenizer: LlamaTokenizer
                     num_beams=1,
                     do_sample=False,
                     temperature=0.0,
-                    pad_token_id=tokenizer.eos_token_id,
+                    eos_token_id=[128001, 128009],
+                    pad_token_id=-1,
                 )[0]
             if model.model_kv_manager is not None:
                 model.model_kv_manager.clear()
 
             pred = tokenizer.decode(output[context_length:], skip_special_tokens=True)
-            pred = post_process(pred, model_name)
+            # pred = post_process(pred, model_name)
             with open(out_path, "a", encoding="utf-8") as f:
                 json.dump({"pred": pred, "answers": json_obj["answers"], "all_classes": json_obj["all_classes"], "length": json_obj["length"]}, f, ensure_ascii=False)
                 f.write('\n')
@@ -266,9 +267,8 @@ if __name__ == '__main__':
 
     # fake_quantizer = get_quantizer_from_str(quant_scheme, name)
 
-    datasets = ["multi_news", \
-            "trec", "triviaqa", "samsum", "passage_count", "passage_retrieval_en", "lcc", "repobench-p"]
-        # datasets = ["qasper", "multifieldqa_en", "hotpotqa", "2wikimqa", "gov_report", "multi_news", \
+    datasets = [ "triviaqa", "qasper", "multifieldqa_en", "hotpotqa", "2wikimqa" ]
+        # datasets = ["gov_report", "multi_news", \
         #     "trec", "triviaqa", "samsum", "passage_count", "passage_retrieval_en"]
         # datasets = ["hotpotqa"]
         # datasets = ["narrativeqa", "qasper", "multifieldqa_en", "multifieldqa_zh", "hotpotqa", "2wikimqa", "musique", \
