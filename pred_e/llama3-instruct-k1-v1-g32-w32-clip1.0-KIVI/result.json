@@ -1,5 +1,7 @@
 {
     "triviaqa": 28.86,
-    "multifieldqa_en": 19.19,
+    "multifieldqa_en": 11.89,
+    "2wikimqa": 8.72,
+    "hotpotqa": 10.72,
     "qasper": 6.51
 }
