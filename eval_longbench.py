@@ -291,7 +291,7 @@ if __name__ == '__main__':
 
     quant_tag = f"-{fake_quantizer.tag()}" if (quant_scheme and quant_scheme != "None") else ""
     for dataset in datasets:
-        data = load_from_disk(f"/home/zeyuli/longbench_local/{dataset}")
+        data = load_from_disk(f"/mnt/sdb/lizeyu/longbench_local/{dataset}")
         if not os.path.exists(f"pred_e/{model_name}{quant_tag}"):
             os.makedirs(f"pred_e/{model_name}{quant_tag}")
         out_path = f"pred_e/{model_name}{quant_tag}/{dataset}.jsonl"
