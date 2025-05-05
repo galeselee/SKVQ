@@ -294,7 +294,7 @@ if __name__ == '__main__':
     model, tokenizer = load_model_custom(model_name, model_path, quant_scheme=quant_scheme)
 
     # quant_tag = f"-{fake_quantizer.tag()}" if (quant_scheme and quant_scheme != "None") else ""
-    quant_tag = ""
+    quant_tag = "-full"
     for dataset in datasets:
         data = load_from_disk(f"/data/user/user93/data/longbench_local/{dataset}")
         if not os.path.exists(f"pred_e_bf16/{model_name}{quant_tag}"):
