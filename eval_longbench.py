@@ -117,8 +117,7 @@ def get_pred(model_name: str, model: LlamaForCausalLM, tokenizer: LlamaTokenizer
                     num_beams=1,
                     do_sample=False,
                     temperature=0.0,
-                    eos_token_id=[128001, 128009],
-                    pad_token_id=-1,
+                    pad_token_id=tokenizer.eos_token_id,
                 )[0]
             if model.model_kv_manager is not None:
                 model.model_kv_manager.clear()
