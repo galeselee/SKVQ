@@ -293,9 +293,9 @@ if __name__ == '__main__':
     quant_tag = f"-{fake_quantizer.tag()}" if (quant_scheme and quant_scheme != "None") else ""
     for dataset in datasets:
         data = load_from_disk(f"/data/user/user93/data/longbench_local/{dataset}")
-        if not os.path.exists(f"pred_e_llama_bf16/{model_name}{quant_tag}"):
-            os.makedirs(f"pred_e_llama_bf16/{model_name}{quant_tag}")
-        out_path = f"pred_e_llama_bf16/{model_name}{quant_tag}/{dataset}.jsonl"
+        if not os.path.exists(f"pred_e_bf16/{model_name}{quant_tag}"):
+            os.makedirs(f"pred_e_bf16/{model_name}{quant_tag}")
+        out_path = f"pred_e_bf16/{model_name}{quant_tag}/{dataset}.jsonl"
         prompt_format = dataset2prompt[dataset]
         max_gen = dataset2maxlen[dataset]
 
