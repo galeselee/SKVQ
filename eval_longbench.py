@@ -117,6 +117,7 @@ def get_pred(model_name: str, model: LlamaForCausalLM, tokenizer: LlamaTokenizer
                     num_beams=1,
                     do_sample=False,
                     temperature=0.0,
+                    eos_token_id=[128001,128009],
                     pad_token_id=tokenizer.eos_token_id,
                 )[0]
             # if model.model_kv_manager is not None:
@@ -293,7 +294,7 @@ if __name__ == '__main__':
     model, tokenizer = load_model_custom(model_name, model_path, quant_scheme=quant_scheme)
 
     # quant_tag = f"-{fake_quantizer.tag()}" if (quant_scheme and quant_scheme != "None") else ""
-    quant_tag = "full"
+    quant_tag = "kv2"
     for dataset in datasets:
         data = load_from_disk(f"/data/user/user93/data/longbench_local/{dataset}")
         if not os.path.exists(f"pred_e_bf16/{model_name}{quant_tag}"):
