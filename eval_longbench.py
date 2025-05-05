@@ -119,8 +119,8 @@ def get_pred(model_name: str, model: LlamaForCausalLM, tokenizer: LlamaTokenizer
                     temperature=0.0,
                     pad_token_id=tokenizer.eos_token_id,
                 )[0]
-            if model.model_kv_manager is not None:
-                model.model_kv_manager.clear()
+            # if model.model_kv_manager is not None:
+                # model.model_kv_manager.clear()
 
             pred = tokenizer.decode(output[context_length:], skip_special_tokens=True)
             # pred = post_process(pred, model_name)
@@ -229,12 +229,13 @@ def load_model_custom(model_name: str, model_path: str, quant_scheme: str):
             use_flash_attention_2=True,
         )
 
-    fake_quantizer:ModelKVCacheManager = get_quantizer_from_str(quant_scheme, model=model, model_name=model_name)
-    plug_quantizer_into_model(
-        model,
-        fake_quantizer
-    )
-    return model, tokenizer, fake_quantizer
+    # fake_quantizer:ModelKVCacheManager = get_quantizer_from_str(quant_scheme, model=model, model_name=model_name)
+    # plug_quantizer_into_model(
+    #     model,
+    #     fake_quantizer
+    # )
+    # return model, tokenizer, fake_quantizer
+    return model, tokenizer
 
 
 
@@ -267,7 +268,8 @@ if __name__ == '__main__':
     # fake_quantizer = get_quantizer_from_str(quant_scheme, name)
 
     # datasets = [ "triviaqa", "qasper", "multifieldqa_en", "hotpotqa", "2wikimqa" ]
-    datasets = ["qasper", "multifieldqa_en", "hotpotqa", "2wikimqa", "gov_report", "multi_news", "trec", "triviaqa", "samsum", "passage_count", "passage_retrieval_en", "lcc", "repobench-p"]
+    # datasets = ["qasper", "multifieldqa_en", "hotpotqa", "2wikimqa", "gov_report", "multi_news", "trec", "triviaqa", "samsum", "passage_count", "passage_retrieval_en", "lcc", "repobench-p"]
+    datasets = ["triviaqa"]
         # datasets = ["gov_report", "multi_news", \
         #     "trec", "triviaqa", "samsum", "passage_count", "passage_retrieval_en"]
         # datasets = ["hotpotqa"]
@@ -287,9 +289,11 @@ if __name__ == '__main__':
     dataset2maxlen = json.load(open(f"{PROJ_DIR}/longbench_config/dataset2maxlen.json", "r"))
     # predict on each dataset
     print(f"* Datasets: {datasets}")
-    model, tokenizer, fake_quantizer = load_model_custom(model_name, model_path, quant_scheme=quant_scheme)
+    # model, tokenizer, fake_quantizer = load_model_custom(model_name, model_path, quant_scheme=quant_scheme)
+    model, tokenizer = load_model_custom(model_name, model_path, quant_scheme=quant_scheme)
 
-    quant_tag = f"-{fake_quantizer.tag()}" if (quant_scheme and quant_scheme != "None") else ""
+    # quant_tag = f"-{fake_quantizer.tag()}" if (quant_scheme and quant_scheme != "None") else ""
+    quant_tag = "full"
     for dataset in datasets:
         data = load_from_disk(f"/data/user/user93/data/longbench_local/{dataset}")
         if not os.path.exists(f"pred_e_bf16/{model_name}{quant_tag}"):
