@@ -1,0 +1,15 @@
+{
+    "gov_report": 30.91,
+    "triviaqa": 79.97,
+    "repobench-p": 37.02,
+    "multi_news": 25.43,
+    "trec": 69.0,
+    "passage_retrieval_en": 85.67,
+    "qasper": 38.82,
+    "2wikimqa": 35.08,
+    "passage_count": 13.17,
+    "hotpotqa": 51.43,
+    "multifieldqa_en": 45.93,
+    "lcc": 48.65,
+    "samsum": 40.46
+}
