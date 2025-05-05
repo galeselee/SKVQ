@@ -219,14 +219,14 @@ def load_model_custom(model_name: str, model_path: str, quant_scheme: str):
         model = MistralForCausalLM.from_pretrained(
             model_path,
             device_map="auto",
-            torch_dtype=torch.float16,
+            torch_dtype=torch.bfloat16,
             use_flash_attention_2=True,
         )
     else:
         model = LlamaForCausalLM.from_pretrained(
             model_path,
             device_map="auto",
-            torch_dtype=torch.float16,
+            torch_dtype=torch.bfloat16,
             use_flash_attention_2=True,
         )
 
@@ -267,7 +267,8 @@ if __name__ == '__main__':
 
     # fake_quantizer = get_quantizer_from_str(quant_scheme, name)
 
-    datasets = [ "triviaqa", "qasper", "multifieldqa_en", "hotpotqa", "2wikimqa" ]
+    # datasets = [ "triviaqa", "qasper", "multifieldqa_en", "hotpotqa", "2wikimqa" ]
+    datasets = ["qasper", "multifieldqa_en", "hotpotqa", "2wikimqa", "gov_report", "multi_news", "trec", "triviaqa", "samsum", "passage_count", "passage_retrieval_en", "lcc", "repobench-p"]
         # datasets = ["gov_report", "multi_news", \
         #     "trec", "triviaqa", "samsum", "passage_count", "passage_retrieval_en"]
         # datasets = ["hotpotqa"]
@@ -291,10 +292,10 @@ if __name__ == '__main__':
 
     quant_tag = f"-{fake_quantizer.tag()}" if (quant_scheme and quant_scheme != "None") else ""
     for dataset in datasets:
-        data = load_from_disk(f"/mnt/sdb/lizeyu/longbench_local/{dataset}")
-        if not os.path.exists(f"pred_e/{model_name}{quant_tag}"):
-            os.makedirs(f"pred_e/{model_name}{quant_tag}")
-        out_path = f"pred_e/{model_name}{quant_tag}/{dataset}.jsonl"
+        data = load_from_disk(f"/data/user/user93/data/longbench_local/{dataset}")
+        if not os.path.exists(f"pred_e_llama_bf16/{model_name}{quant_tag}"):
+            os.makedirs(f"pred_e_llama_bf16/{model_name}{quant_tag}")
+        out_path = f"pred_e_llama_bf16/{model_name}{quant_tag}/{dataset}.jsonl"
         prompt_format = dataset2prompt[dataset]
         max_gen = dataset2maxlen[dataset]
 
